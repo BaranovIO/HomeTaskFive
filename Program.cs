@@ -1,13 +1,4 @@
-﻿void ShowArray(int[] array)
-{
-    for(int i = 0; i < array.Length; i++)
-    {
-      Console.Write(array[i] + " ");
-    }
-    Console.WriteLine();
-}
-
-/*
+﻿/*
 int[] CreateRandomArray(int size)
 {
     int[] array = new int[size];
@@ -30,6 +21,15 @@ int EvenNumberCount(int[] array)
     return count;
 }
 
+void ShowArray(int[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+    {
+      Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
+}
+
 Console.Write("Введите число элементов массива: ");
 int length = Convert.ToInt32(Console.ReadLine());
 
@@ -40,7 +40,7 @@ int result = EvenNumberCount(myArray);
 Console.WriteLine("Количество чётных элементов массива: " + result);
 */
 
-
+/*
 int[] CreateRandomArray(int size, int minValue, int maxValue)
 {
     int[] array = new int[size];
@@ -62,21 +62,79 @@ int SumOfElementsOnOddIndex(int[] array)
     return sum;
 }
 
-Console.Write("Input a number of elements: ");
+void ShowArray(int[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+    {
+      Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
+}
+
+Console.Write("Введите число элементов массива: ");
 int length = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a min value: ");
+Console.Write("Введите минимальное значение элемента массива: ");
 int min = Convert.ToInt32(Console.ReadLine());
-Console.Write("Input a max value: ");
+Console.Write("Введите максимальное значение элемента массива: ");
 int max = Convert.ToInt32(Console.ReadLine());
 
 int[] myArray = CreateRandomArray(length, min, max);
 ShowArray(myArray);
 
 int result = SumOfElementsOnOddIndex(myArray);
-Console.WriteLine("The sum of elements on odd indexes is " + result);
+Console.WriteLine("Сумма элементов массива на нечётных индексах равна " + result);
+*/
 
+double[] CreateDoubleArray(int size, int minValue, int maxValue)
+{
+    double[] array = new double[size];
+    double[] arrayDouble = new double[size];
 
+    for(int i = 0; i < size; i++)   
+    {
+        array[i] = new Random().Next(minValue, maxValue);
+        arrayDouble[i] = new Random().NextDouble();
+        array[i] = array[i] + Math.Round(arrayDouble[i], 2);
 
+    }
+    return array;
+}
 
+void ShowArray(double[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+    {
+      Console.Write(array[i] + " ");
+    }
+    Console.WriteLine();
+}
 
+double MaxMinusMin(double[] array)
+{
+    double minNumber = array[0];
+    double maxNumber = array[0];
+    for(int i = 0; i < array.Length; i++)
+    {
+        if(array[i] < minNumber)
+            minNumber = array[i];
+
+        if(array[i] > maxNumber)     
+            maxNumber = array[i];
+    }
+    double dif = maxNumber - minNumber;
+    return dif;
+}
+
+Console.Write("Введите число элементов массива: ");
+int length = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите минимальное значение элемента массива: ");
+int min = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите максимальное значение элемента массива: ");
+int max = Convert.ToInt32(Console.ReadLine());
+
+double[] myArray = CreateDoubleArray(length, min, max);
+ShowArray(myArray);
+
+double result = MaxMinusMin(myArray);
+Console.WriteLine("Разница между максимальным и минимальным элементами массива равна: " + result);
 
